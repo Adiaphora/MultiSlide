@@ -5,7 +5,8 @@ Run, pick folder, specify/choose a layout and enjoy.
 Useful for viewing reference images with periodical shuffling, while pausing some of it.  
 
 ## Features
-* Ordered / random sequence
+* SVG / JSON / Manual layout
+* Ordered / random image sequence
 * Drag-n-drop images between panels
 * Expand panel
 * Fit / cover content
