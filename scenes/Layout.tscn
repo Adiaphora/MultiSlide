@@ -1,0 +1,178 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://theme.tres" type="Theme" id=1]
+[ext_resource path="res://modes.tres" type="ButtonGroup" id=2]
+[ext_resource path="res://src/Modes.gd" type="Script" id=3]
+
+[node name="PanelContainer" type="Popup"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -300.0
+margin_top = -200.0
+margin_right = 300.0
+margin_bottom = 228.0
+theme = ExtResource( 1 )
+script = ExtResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0901961, 0.0823529, 0.121569, 0.878431 )
+
+[node name="Margin" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 20.0
+margin_right = -20.0
+margin_bottom = -20.0
+
+[node name="HSplitContainer" type="HSplitContainer" parent="Margin"]
+margin_right = 560.0
+margin_bottom = 388.0
+
+[node name="VSplitContainer" type="VBoxContainer" parent="Margin/HSplitContainer"]
+margin_right = 250.0
+margin_bottom = 388.0
+rect_min_size = Vector2( 250, 0 )
+
+[node name="Templates" type="HBoxContainer" parent="Margin/HSplitContainer/VSplitContainer"]
+margin_right = 250.0
+margin_bottom = 40.0
+
+[node name="CheckButton" type="CheckButton" parent="Margin/HSplitContainer/VSplitContainer/Templates"]
+margin_right = 76.0
+margin_bottom = 40.0
+focus_mode = 0
+group = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="Margin/HSplitContainer/VSplitContainer/Templates"]
+margin_left = 80.0
+margin_top = 7.0
+margin_right = 155.0
+margin_bottom = 32.0
+text = "Presets:"
+
+[node name="Presets" type="ItemList" parent="Margin/HSplitContainer/VSplitContainer"]
+margin_top = 44.0
+margin_right = 250.0
+margin_bottom = 388.0
+size_flags_vertical = 3
+
+[node name="Opts" type="VBoxContainer" parent="Margin/HSplitContainer"]
+margin_left = 262.0
+margin_right = 560.0
+margin_bottom = 388.0
+
+[node name="Label4" type="Label" parent="Margin/HSplitContainer/Opts"]
+margin_right = 298.0
+margin_bottom = 25.0
+text = "Custom setup:"
+
+[node name="btnDraw" type="Button" parent="Margin/HSplitContainer/Opts"]
+margin_top = 29.0
+margin_right = 298.0
+margin_bottom = 60.0
+size_flags_vertical = 4
+text = "Draw"
+
+[node name="btnSplit" type="Button" parent="Margin/HSplitContainer/Opts"]
+visible = false
+margin_top = 64.0
+margin_right = 298.0
+margin_bottom = 95.0
+size_flags_vertical = 4
+text = "Split"
+
+[node name="HSeparator" type="HSeparator" parent="Margin/HSplitContainer/Opts"]
+margin_top = 64.0
+margin_right = 298.0
+margin_bottom = 68.0
+
+[node name="SVG" type="HBoxContainer" parent="Margin/HSplitContainer/Opts"]
+margin_top = 72.0
+margin_right = 298.0
+margin_bottom = 136.0
+
+[node name="CheckButton" type="CheckButton" parent="Margin/HSplitContainer/Opts/SVG"]
+margin_right = 76.0
+margin_bottom = 64.0
+focus_mode = 0
+group = ExtResource( 2 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Margin/HSplitContainer/Opts/SVG"]
+margin_left = 80.0
+margin_right = 298.0
+margin_bottom = 64.0
+size_flags_horizontal = 3
+
+[node name="Label3" type="Label" parent="Margin/HSplitContainer/Opts/SVG/VBoxContainer"]
+margin_right = 218.0
+margin_bottom = 25.0
+text = "SVG layout"
+
+[node name="TextEdit3" type="LineEdit" parent="Margin/HSplitContainer/Opts/SVG/VBoxContainer"]
+margin_top = 29.0
+margin_right = 218.0
+margin_bottom = 64.0
+size_flags_horizontal = 3
+text = "./layout.svg"
+
+[node name="HSeparator2" type="HSeparator" parent="Margin/HSplitContainer/Opts"]
+margin_top = 140.0
+margin_right = 298.0
+margin_bottom = 144.0
+
+[node name="JSON" type="HBoxContainer" parent="Margin/HSplitContainer/Opts"]
+margin_top = 148.0
+margin_right = 298.0
+margin_bottom = 212.0
+
+[node name="CheckButton" type="CheckButton" parent="Margin/HSplitContainer/Opts/JSON"]
+margin_right = 76.0
+margin_bottom = 64.0
+focus_mode = 0
+group = ExtResource( 2 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Margin/HSplitContainer/Opts/JSON"]
+margin_left = 80.0
+margin_right = 298.0
+margin_bottom = 64.0
+size_flags_horizontal = 3
+
+[node name="LabelJS" type="Label" parent="Margin/HSplitContainer/Opts/JSON/VBoxContainer"]
+margin_right = 218.0
+margin_bottom = 25.0
+text = "JSON"
+
+[node name="RawJson" type="LineEdit" parent="Margin/HSplitContainer/Opts/JSON/VBoxContainer"]
+margin_top = 29.0
+margin_right = 218.0
+margin_bottom = 64.0
+text = "{\"v3\":{\"2.h.40\":0}}"
+placeholder_text = "{\"v3\":0}"
+
+[node name="HSeparator3" type="HSeparator" parent="Margin/HSplitContainer/Opts"]
+margin_top = 216.0
+margin_right = 298.0
+margin_bottom = 220.0
+
+[node name="Stats" type="VBoxContainer" parent="Margin/HSplitContainer/Opts"]
+margin_top = 224.0
+margin_right = 298.0
+margin_bottom = 249.0
+
+[node name="Hint" type="Label" parent="Margin/HSplitContainer/Opts/Stats"]
+modulate = Color( 0.54902, 0.54902, 0.54902, 1 )
+margin_right = 298.0
+margin_bottom = 25.0
+text = "Segments: 0"
+
+[node name="Preview" type="Control" parent="Margin/HSplitContainer/Opts"]
+margin_top = 253.0
+margin_right = 298.0
+margin_bottom = 388.0
+size_flags_horizontal = 3
+size_flags_vertical = 3

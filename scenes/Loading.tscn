@@ -1,0 +1,101 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("R1:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "loading"
+length = 4.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("R1:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( -0.1, 0.1, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.392157 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.392157 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("R2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.9, 1.1, 2.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.392157 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.392157 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("R3:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 3, 3.2, 4.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.392157 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.392157 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("R4:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = false
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 2, 2.2, 3.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.392157 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.392157 ) ]
+}
+
+[node name="Node2D" type="Node2D"]
+scale = Vector2( 1.61381, 1.61381 )
+
+[node name="R1" type="ColorRect" parent="."]
+margin_left = -30.0
+margin_top = -30.0
+margin_right = -15.0
+
+[node name="R2" type="ColorRect" parent="."]
+modulate = Color( 1, 1, 1, 0.623309 )
+margin_left = -5.0
+margin_top = -30.0
+margin_right = 30.0
+
+[node name="R3" type="ColorRect" parent="."]
+modulate = Color( 1, 1, 1, 0.392157 )
+margin_left = -30.0
+margin_top = 10.0
+margin_right = 5.0
+margin_bottom = 30.0
+
+[node name="R4" type="ColorRect" parent="."]
+modulate = Color( 1, 1, 1, 0.392157 )
+margin_left = 15.0
+margin_top = 10.0
+margin_right = 30.0
+margin_bottom = 30.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 1 )
+anims/loading = SubResource( 2 )

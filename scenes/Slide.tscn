@@ -1,0 +1,73 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://src/Slide.gd" type="Script" id=1]
+[ext_resource path="res://scenes/Layout.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/Settings.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Setup.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/gear.png" type="Texture" id=5]
+[ext_resource path="res://assets/layout.png" type="Texture" id=6]
+[ext_resource path="res://scenes/Draw.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/Draw.gd" type="Script" id=8]
+
+[node name="Stage" type="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 1 )
+srcPath = ""
+
+[node name="Slides" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="SettingsBtn" type="TextureButton" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -64.0
+margin_top = 16.0
+margin_right = -16.0
+margin_bottom = 64.0
+hint_tooltip = "Settings"
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 5 )
+expand = true
+
+[node name="LayoutBtn" type="TextureButton" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -136.0
+margin_top = 16.0
+margin_right = -88.0
+margin_bottom = 64.0
+hint_tooltip = "Layout"
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 6 )
+expand = true
+
+[node name="SettingsPopup" parent="." instance=ExtResource( 3 )]
+margin_bottom = 240.0
+
+[node name="SplitPopup" parent="." instance=ExtResource( 4 )]
+margin_right = -120.0
+margin_bottom = -52.0
+
+[node name="LayoutSetup" parent="." instance=ExtResource( 2 )]
+margin_bottom = 240.0
+
+[node name="DrawPopup" parent="." instance=ExtResource( 7 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 0.0
+margin_bottom = 0.0
+script = ExtResource( 8 )
+
+[connection signal="timeout" from="Timer" to="." method="interval"]

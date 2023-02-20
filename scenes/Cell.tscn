@@ -1,0 +1,183 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://src/Cell.gd" type="Script" id=1]
+[ext_resource path="res://assets/play.png" type="Texture" id=2]
+[ext_resource path="res://assets/pause.png" type="Texture" id=3]
+[ext_resource path="res://assets/default.png" type="Texture" id=4]
+[ext_resource path="res://assets/corner.png" type="Texture" id=5]
+[ext_resource path="res://transition.shader" type="Shader" id=6]
+[ext_resource path="res://assets/drag.png" type="Texture" id=7]
+[ext_resource path="res://assets/fit.png" type="Texture" id=8]
+[ext_resource path="res://assets/max.png" type="Texture" id=9]
+[ext_resource path="res://src/Bar.gd" type="Script" id=10]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+shader = ExtResource( 6 )
+shader_param/delta = 0.0
+shader_param/t2s = Vector2( 1, 1 )
+shader_param/pos = Vector2( 0, 0 )
+
+[node name="Cell" type="TextureRect"]
+material = SubResource( 1 )
+margin_right = 320.0
+margin_bottom = 320.0
+rect_clip_content = true
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 7
+script = ExtResource( 1 )
+
+[node name="TexOverlay" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_clip_content = true
+expand = true
+stretch_mode = 7
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0.607843 )
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -16.0
+value = 100.0
+percent_visible = false
+
+[node name="ProgressTween" type="Tween" parent="."]
+
+[node name="Ctr" type="Label" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 32.0
+custom_colors/font_color = Color( 0.0392157, 0.972549, 0.733333, 1 )
+text = "0"
+
+[node name="c_lt" type="TextureRect" parent="."]
+visible = false
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 24.0
+margin_bottom = 24.0
+texture = ExtResource( 5 )
+expand = true
+
+[node name="c_rt" type="TextureRect" parent="."]
+visible = false
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -8.0
+margin_top = 8.0
+margin_bottom = 16.0
+rect_rotation = 90.0
+texture = ExtResource( 5 )
+expand = true
+
+[node name="c_rb" type="TextureRect" parent="."]
+visible = false
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -8.0
+margin_top = -8.0
+rect_rotation = 180.0
+texture = ExtResource( 5 )
+expand = true
+
+[node name="c_lb" type="TextureRect" parent="."]
+visible = false
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = -8.0
+margin_right = 16.0
+rect_rotation = 270.0
+texture = ExtResource( 5 )
+expand = true
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="btnBar" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+margin_bottom = 42.0
+mouse_filter = 1
+color = Color( 0.196078, 0.196078, 0.196078, 0.27451 )
+
+[node name="HBox" type="HBoxContainer" parent="btnBar"]
+anchor_right = 1.0
+margin_top = 5.0
+margin_bottom = 32.0
+custom_constants/separation = 15
+alignment = 1
+script = ExtResource( 10 )
+
+[node name="btnDrag" type="TextureButton" parent="btnBar/HBox"]
+visible = false
+modulate = Color( 1, 1, 1, 0.588235 )
+margin_left = 73.0
+margin_right = 105.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+hint_tooltip = "Pan image"
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+keep_pressed_outside = true
+texture_normal = ExtResource( 7 )
+expand = true
+stretch_mode = 5
+
+[node name="btnMax" type="TextureButton" parent="btnBar/HBox"]
+modulate = Color( 1, 1, 1, 0.588235 )
+margin_left = 120.0
+margin_right = 152.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+hint_tooltip = "Maximize"
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+toggle_mode = true
+texture_normal = ExtResource( 9 )
+expand = true
+
+[node name="btnFit" type="TextureButton" parent="btnBar/HBox"]
+modulate = Color( 1, 1, 1, 0.588235 )
+margin_left = 167.0
+margin_right = 199.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+hint_tooltip = "Fit / Cover"
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+toggle_mode = true
+texture_normal = ExtResource( 8 )
+expand = true
+
+[node name="btnPause" type="TextureButton" parent="btnBar/HBox"]
+self_modulate = Color( 100, 100, 100, 1 )
+margin_left = 214.0
+margin_right = 246.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+hint_tooltip = "Pause/Play"
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+toggle_mode = true
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 2 )
+expand = true
+
+[node name="Filename" type="Label" parent="."]
+visible = false
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -14.0
+text = "filename"
+align = 1
+max_lines_visible = 0
+
+[connection signal="toggled" from="btnBar/HBox/btnFit" to="." method="toggleMode"]
+[connection signal="toggled" from="btnBar/HBox/btnPause" to="." method="toggleState"]
